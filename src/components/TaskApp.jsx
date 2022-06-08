@@ -1,21 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styles from "./taskApp.module.css";
 
 import TaskHeader from "./TaskHeader/TaskHeader";
 import AddTask from "./AddTask/AddTask";
 import Tasks from "./Tasks/Tasks";
+import data from "../data/tasks.json";
 
 const TaskApp = () => {
   // NOTE: do not delete `data-testid` key value pair
+  const [tdata, settData] = useState(data);
+  console.log(tdata);
   return (
     <div data-testid="task-app" className={styles.taskApp}>
       {/* Header */}
-      <TaskHeader />
+      <TaskHeader value={tdata} />
       {/* Add Task */}
-      <AddTask />
+      <AddTask value={tdata} functi={settData} />
       {/* Tasks */}
-      <Tasks />
+      <Tasks value={tdata} functi={settData} />
     </div>
   );
 };

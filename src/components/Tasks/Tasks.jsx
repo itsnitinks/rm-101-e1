@@ -1,26 +1,28 @@
 import React from "react";
 import styles from "./tasks.module.css";
 import Task from "../Task/Task";
-import data from "../../data/tasks.json";
-const Tasks = () => {
+
+const Tasks = ({ value, functi }) => {
+  // console.log(value);
+
   // NOTE: do not delete `data-testid` key value pair
-  console.log("data", data);
+
   return (
     <>
       <ul data-testid="tasks" className={styles.tasks}>
         {/* Task List */}
-        {data.map(function (elem, id) {
+        {value.map(function (elem) {
           return (
             <>
-              <Task value={elem} id={elem.id} />
+              <Task intotal={elem} />
             </>
           );
         })}
       </ul>
-      {data.length === 0 ? (
+      {value.length === 0 ? (
         <div data-testid="tasks-empty" className={styles.empty}>
           {/* Show when No Tasks are present */}
-          Add Tasks
+          Empty list Add a new task above
         </div>
       ) : null}
     </>
